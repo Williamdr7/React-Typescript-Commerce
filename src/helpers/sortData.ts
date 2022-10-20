@@ -1,6 +1,11 @@
 import { ProductInterface } from "../store/productsReducer";
 
-export default function sortData(sortType: any, products: ProductInterface[]) {
+export type SortTypes = "Rating" | "Price: low to high" | "Price: high to low";
+
+export default function sortData(
+  sortType: SortTypes,
+  products: ProductInterface[]
+) {
   let newProducts = products;
 
   switch (sortType) {

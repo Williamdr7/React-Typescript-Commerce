@@ -4,11 +4,11 @@ import StarIcon from "@material-ui/icons/Star";
 import StarHalfOutlinedIcon from "@material-ui/icons/StarHalfOutlined";
 import Typography from "@material-ui/core/Typography";
 
-interface Props {
+interface RatingProps {
   count: number;
 }
 
-export default function Rating({ count }: Props) {
+export default function Rating({ count }: RatingProps) {
   const classes = RatingStyles();
 
   return (

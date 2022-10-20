@@ -1,6 +1,6 @@
 import { ProductAction } from "./actions/ProductsActions";
 
-export interface ProductsState {
+export interface ProductsInterface {
   products: ProductInterface[];
   filteredProducts: ProductInterface[];
 }
@@ -21,7 +21,7 @@ const initialState = {
 };
 
 export const productsReducer = (
-  state: ProductsState = initialState,
+  state: ProductsInterface = initialState,
   action: ProductAction
 ) => {
   switch (action.type) {

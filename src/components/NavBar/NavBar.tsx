@@ -11,7 +11,10 @@ import { setFilters } from "../../store/actions/FilterActions";
 import { useSelector, useDispatch } from "react-redux";
 import { FiltersInterface, FilterInterface } from "../../store/filters";
 import { filterProducts } from "../../store/actions/ProductsActions";
-import { ProductInterface, ProductsState } from "../../store/productsReducer";
+import {
+  ProductInterface,
+  ProductsInterface,
+} from "../../store/productsReducer";
 import { CartInterface } from "../../store/cart";
 import calculateAmount from "../../helpers/calculateAmount";
 import { setCartAmount, setCartPrice } from "../../store/actions/CartAction";
@@ -19,7 +22,7 @@ import { setCartAmount, setCartPrice } from "../../store/actions/CartAction";
 export default function NavBar() {
   const [searchFilter, setSearchFilter] = useState("");
   const dispatch = useDispatch();
-  const { products }: ProductInterface[] | any = useSelector<ProductsState>(
+  const { products }: ProductInterface[] | any = useSelector<ProductsInterface>(
     (state) => state.products
   );
   const { filters }: FilterInterface | any = useSelector<FiltersInterface>(

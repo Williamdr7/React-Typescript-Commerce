@@ -16,11 +16,17 @@ import Toast from "../Toast/Toast";
 interface Props {
   product: ProductInterface;
 }
+
+interface IOption {
+  label: string;
+  value: string;
+}
+
 export default function Product({ product }: Props) {
   const [amount, setAmount] = useState<number | unknown>(1);
   const [showToast, setShowToast] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const [amountOptions, setAmountOptions] = useState<any[]>();
+  const [amountOptions, setAmountOptions] = useState<IOption[]>();
   const [isAdded, setIsAdded] = useState<boolean>(false);
   const classes = ProductStyles();
 

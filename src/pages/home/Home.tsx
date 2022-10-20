@@ -4,7 +4,10 @@ import { Grid } from "@material-ui/core";
 import HomeStyles from "./styles";
 import { configurePaginate } from "../../helpers/configurePaginate";
 import Pagination from "@material-ui/lab/Pagination";
-import { ProductInterface, ProductsState } from "../../store/productsReducer";
+import {
+  ProductInterface,
+  ProductsInterface,
+} from "../../store/productsReducer";
 import { useSelector, useDispatch } from "react-redux";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -17,7 +20,7 @@ import {
 } from "../../store/actions/ProductsActions";
 import { getAllProducts } from "../../services/dato-cms";
 import Typography from "@material-ui/core/Typography";
-import sortData from "../../helpers/sortData";
+import sortData, { SortTypes } from "../../helpers/sortData";
 import { MobileFiltersInterface } from "../../store/mobileFilters";
 import { setMobileFilters } from "../../store/actions/MobileMenuAction";
 import MobileFilters from "../../components/MobileFilters/MobileFilters";
@@ -31,7 +34,7 @@ export default function Home(): ReactElement {
 
   const dispatch = useDispatch();
   const { filteredProducts }: ProductInterface[] | any =
-    useSelector<ProductsState>((state) => state.products);
+    useSelector<ProductsInterface>((state) => state.products);
   const { mobileFilters }: boolean | any = useSelector<MobileFiltersInterface>(
     (state) => state.mobileFilters
   );
@@ -42,7 +45,7 @@ export default function Home(): ReactElement {
   );
 
   const [page, setPage] = useState<number>(1);
-  const [sortType, setSortType] = useState<string | unknown>("Rating");
+  const [sortType, setSortType] = useState<SortTypes>("Rating");
   const [loading, setLoading] = useState<boolean>(true);
 
   const getProducts = async () => {
@@ -119,7 +122,7 @@ export default function Home(): ReactElement {
               <Select
                 className={`${classes.selectInput}`}
                 value={[sortType]}
-                onChange={(ev) => setSortType(ev.target.value)}
+                onChange={(ev: any) => setSortType(ev.target.value)}
                 input={<OutlinedInput label="Name" />}
               >
                 {INDEX_OPTIONS.map((option: string, i) => (

@@ -13,7 +13,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { setFilters } from "../../store/actions/FilterActions";
 import { FiltersInterface, FilterInterface } from "../../store/filters";
 import { filterProducts } from "../../store/actions/ProductsActions";
-import { ProductInterface, ProductsState } from "../../store/productsReducer";
+import {
+  ProductInterface,
+  ProductsInterface,
+} from "../../store/productsReducer";
 import { setMobileFilters } from "../../store/actions/MobileMenuAction";
 
 interface FiltersBarInterface {
@@ -26,7 +29,7 @@ export default function FilterBar(): ReactElement {
   const { filters }: FilterInterface | any = useSelector<FiltersInterface>(
     (state) => state.filters
   );
-  const { products }: ProductInterface[] | any = useSelector<ProductsState>(
+  const { products }: ProductInterface[] | any = useSelector<ProductsInterface>(
     (state) => state.products
   );
   const dispatch = useDispatch();
